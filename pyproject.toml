@@ -7,10 +7,22 @@ authors = [
 ]
 requires-python = "^3.14"
 dependencies = [
-    "schedule (>=1.2.2,<2.0.0)"
+    "schedule (>=1.2.2,<2.0.0)",
+    "pytest (>=9.1.0,<10.0.0)"
 ]
 
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=greenhouse --cov-report=term-missing --cov-report=html"
+pythonpath = ["."]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.1.0,<10.0.0)",
+    "pytest-cov (>=7.1.0,<8.0.0)"
+]
