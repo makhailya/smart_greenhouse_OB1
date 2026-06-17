@@ -1,0 +1,10 @@
+{
+  "thresholds": {
+    "humidity_min": 40,
+    "temperature_max": 30,
+    "light_min": 300
+  },
+  "schedule": {
+    "watering_times": ["08:00", "12:00", "18:00"]
+  }
+}
