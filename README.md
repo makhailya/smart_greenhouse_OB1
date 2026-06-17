@@ -116,7 +116,47 @@ poetry run python main.py
 - Подключение реальных датчиков (например, через Raspberry Pi и GPIO)
 - Графики истории показаний на основе данных из SQLite
 - Уведомления в Telegram при критических отклонениях
-- Покрытие кода тестами (pytest) для модулей `controller.py` и `database.py`
+---
+
+## 🧪 Тестирование
+
+Проект покрыт тестами pytest с отчётом о покрытии (coverage).
+
+### Структура тестов
+
+```
+tests/
+├── conftest.py              # Фикстуры (in-memory БД, мок config.json)
+├── test_database.py         # 6 тестов: создание таблиц, запись/чтение сенсоров и событий
+└── test_controller.py       # 16 тестов: инициализация, read_sensors, пороги, цикл control()
+```
+
+### Запуск тестов
+
+```bash
+PYTHONPATH=. poetry run pytest
+```
+
+С отчётом о покрытии в консоли:
+
+```bash
+PYTHONPATH=. poetry run pytest --cov-report=term-missing
+```
+
+С HTML-отчётом (открыть `htmlcov/index.html`):
+
+```bash
+PYTHONPATH=. poetry run pytest --cov-report=html
+```
+
+### Текущее покрытие
+
+| Модуль | Покрытие |
+|---|---|
+| `controller.py` | 100 % |
+| `database.py` | 100 % |
+| `actuators.py` | 100 % |
+| `sensors.py` | 81 % |
 
 ---
 
